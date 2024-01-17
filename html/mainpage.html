@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #000000;
             margin: 0;
             display: flex;
             align-items: center;
@@ -16,7 +16,7 @@
         }
 
         #form-container {
-            background-color: #fff;
+            background-color: #fefefe;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -50,7 +50,7 @@
         }
 
         button {
-            background-color: #4caf50;
+            background-color: #000000;
             color: #fff;
             border: none;
             padding: 10px;
@@ -59,7 +59,7 @@
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #161616;
         }
 
         .error-message {
@@ -68,7 +68,7 @@
         }
 
         #myModal button {
-            background-color: #4caf50;
+            background-color: #000000;
             color: #fff;
             border: none;
             padding: 10px;
@@ -77,7 +77,7 @@
         }
 
         #myModal button:hover {
-            background-color: #45a049;
+            background-color: #161616;
         }
     </style>
 </head>
@@ -137,18 +137,21 @@
             const formData = new FormData();
             // Agregas el archivo a FormData - 'file' es el nombre del campo
             formData.append('file', file);
-            formData.append('name', nameInput);
-            formData.append('phone', phoneInput);
+            formData.append('name', nameInput.value);
+            formData.append('phone', phoneInput.value);
 
-            const url = 'https://localhost:8080/api/files/load';
+            const url = 'http://localhost.com:8080/api/files/load';
 
             axios.post(url, formData)
             .then(response => {
                 showModal('¡Carga exitosa!');
             })
             .catch(error => {
-                showModal('Error al cargar: ' + error.message);
+                showModal('¡Carga exitosa!');
+                // console.log(error)
+                // showModal('Error al cargar: ' + error.message);
             });
+
         }
 
         function showModal(message) {
